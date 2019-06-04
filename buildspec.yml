@@ -1,0 +1,12 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - docker build -t spinnakerdemo .
+
+  post_build:
+    commands:
+      - eval `aws ecr get-login --region us-east-1`
+      - docker tag spinnakerdemo:latest $ACCOUNTNAME.dkr.ecr.us-east-1.amazonaws.com/spinnakerdemo:latest
+      - docker push $ACCOUNTNAME.dkr.ecr.us-east-1.amazonaws.com/spinnakerdemo:latest
