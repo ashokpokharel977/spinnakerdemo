@@ -9,7 +9,7 @@ phases:
   post_build:
     commands:
       - echo logging in to AWS ECR...
-      - eval aws ecr get-login --no-include-email --region us-east-1
+      - $(aws ecr get-login --no-include-email --region us-east-1)
 
-      - docker tag cicdforspinnaker:latest 031342435657.dkr.ecr.us-east-1.amazonaws.com/cicdforspinnaker:latest
-      - docker push 031342435657.dkr.ecr.us-east-1.amazonaws.com/cicdforspinnaker:latest
+      - docker tag cicdforspinnaker:latest $ACCOUNTNAME.dkr.ecr.us-east-1.amazonaws.com/cicdforspinnaker:latest
+      - docker push $ACCOUNTNAME.dkr.ecr.us-east-1.amazonaws.com/cicdforspinnaker:latest
