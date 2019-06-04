@@ -11,5 +11,5 @@ phases:
       - echo logging in to AWS ECR...
 
       - docker tag cicdforspinnaker:latest $ACCOUNTNAME.dkr.ecr.us-east-1.amazonaws.com/cicdforspinnaker:latest
-      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - $(aws ecr get-login --no-include-email | sed 's|https://||')
       - docker push $ACCOUNTNAME.dkr.ecr.us-east-1.amazonaws.com/cicdforspinnaker:latest
