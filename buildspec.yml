@@ -4,7 +4,6 @@ phases:
   build:
     commands:
       - echo $ACCOUNTNAME
-      - cd spinnakerdemo
       - docker build -t spinnakerdemo:latest .
 
   post_build:
